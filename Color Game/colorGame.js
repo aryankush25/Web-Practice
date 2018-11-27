@@ -24,6 +24,9 @@ window.onload = function() {
                 squares[i].style.display = "none";
             }
         }
+        h1.style.backgroundColor = "steelblue";
+        messageDisplay.innerHTML = "";
+        resetButton.textContent = "New Colors";
     });
     
     hardBtn.addEventListener("click", function() {
@@ -37,6 +40,9 @@ window.onload = function() {
             squares[i].style.backgroundColor = colors[i];
             squares[i].style.display = "block";
         }
+        h1.style.backgroundColor = "steelblue";
+        messageDisplay.innerHTML = "";
+        resetButton.textContent = "New Colors";
     });
     
     resetButton.addEventListener("click", function() {
@@ -47,6 +53,8 @@ window.onload = function() {
             squares[i].style.backgroundColor = colors[i];
         }
         h1.style.backgroundColor = "steelblue";
+        messageDisplay.innerHTML = "";
+        this.innerHTML = "New Colors";
     });
     
     colorDisplay.textContent = pickedColor;
@@ -61,7 +69,7 @@ window.onload = function() {
             var clickedColor = this.style.backgroundColor;
 
             if (clickedColor === pickedColor) {
-                messageDisplay.textContent = "Correct";
+                messageDisplay.textContent = "Correct !!";
                 resetButton.textContent = "Play Again !!!"
                 changeColors(clickedColor);
                 h1.style.backgroundColor = clickedColor;
