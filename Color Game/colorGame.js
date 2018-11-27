@@ -6,8 +6,19 @@ window.onload = function() {
     var colorDisplay = document.getElementById("colorDisplay");
     var messageDisplay = document.querySelector("#message");
     var h1 = document.getElementsByTagName("h1")[0];
+    var resetButton = document.querySelector("#reset");
     
     colorDisplay.textContent = pickedColor;
+    
+    resetButton.addEventListener("click", function() {
+        colors = generateRandomeColors(6);
+        pickedColor = pickColor();
+        colorDisplay.textContent = pickedColor;
+        for(let i = 0; i< squares.length; i++) {
+            squares[i].style.backgroundColor = colors[i];
+        }
+        h1.style.backgroundColor = document.body.style.backgroundColor;
+    });
     
     for(let i = 0; squares.length; i++) {
         //squares[i].setAttribute("style", "backgroundColor: ${squares[i]}");
@@ -19,6 +30,7 @@ window.onload = function() {
             
             if (clickedColor === pickedColor) {
                 messageDisplay.textContent = "Correct";
+                resetButton.textContent = "Play Again !!!"
                 changeColors(clickedColor);
                 h1.style.backgroundColor = clickedColor;
             } else {
