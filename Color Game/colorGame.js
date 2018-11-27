@@ -17,5 +17,18 @@ window.onload = function() {
     for(let i = 0; squares.length; i++) {
         //squares[i].setAttribute("style", "background-color: ${squares[i]}");
         squares[i].style.backgroundColor = color[i];
+        
+        squares[i].addEventListener("click", function() {
+            //alert("clicked " + (i + 1) + " square");
+            var clickedColor = this.style.backgroundColor;
+            
+            if (clickedColor === pickedColor) {
+                alert("You Won !!!");
+            } else {
+                this.style.backgroundColor = document.querySelector("body").style.backgroundColor;
+            }
+            
+            
+        });
     }
 }
