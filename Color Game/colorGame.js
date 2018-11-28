@@ -7,10 +7,45 @@ window.onload = function() {
     var messageDisplay = document.querySelector("#message");
     var h1 = document.getElementsByTagName("h1")[0];
     var resetButton = document.querySelector("#reset");
-    var easyBtn = document.querySelector("#easyBtn");
-    var hardBtn = document.querySelector("#hardBtn");
+    var modeButtons = document.querySelectorAll(".mode");
     
-    easyBtn.addEventListener("click", function() {
+    for(let i = 0; i < modeButtons.length; i++) {
+        modeButtons[i].addEventListener("click", function() {
+            modeButtons[0].classList.remove("selected");
+            modeButtons[1].classList.remove("selected");
+            this.classList.add("selected");
+            
+            if (this.textContent === "Easy") {
+                numSquares = 3;
+            } else {
+                numSquares = 6;
+            }
+            reset();
+        });
+    }
+    
+    resetButton.addEventListener("click", function() {
+        reset();
+    });
+    
+    function reset() {
+        colors = generateRandomeColors(numSquares);
+        pickedColor = pickColor();
+        colorDisplay.textContent = pickedColor;
+        for(let i = 0; i< squares.length; i++) {
+            if (colors[i]) {
+                squares[i].style.display = "block";
+                squares[i].style.backgroundColor = colors[i];
+            } else {
+                squares[i].style.display = "none";
+            }
+        }
+        h1.style.backgroundColor = "steelblue";
+        messageDisplay.innerHTML = "";
+        resetButton.innerHTML = "New Colors";
+    }
+    
+    /*easyBtn.addEventListener("click", function() {
         easyBtn.classList.add("selected");
         hardBtn.classList.remove("selected");
         numSquares = 3;
@@ -55,10 +90,9 @@ window.onload = function() {
         h1.style.backgroundColor = "steelblue";
         messageDisplay.innerHTML = "";
         this.innerHTML = "New Colors";
-    });
+    });*/
     
     colorDisplay.textContent = pickedColor;
-    hardBtn.classList.add("selected");
 
     for(let i = 0; squares.length; i++) {
 
