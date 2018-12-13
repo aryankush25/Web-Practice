@@ -42,7 +42,7 @@ button.addEventListener("click", function() {
     isWhite = !isWhite;
 });*/
 
-var body = document.querySelector("body");
+/*var body = document.querySelector("body");
 button.addEventListener("click", function() {
     body.classList.toggle("colorToggle");
-});
+});*/
